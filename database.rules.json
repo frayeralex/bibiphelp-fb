@@ -1,0 +1,32 @@
+{
+  "rules": {
+    "events": {
+      ".read": true,
+      ".write": "auth.uid != null",
+      "$event": {
+        "id": {
+          ".validate": true
+        },
+        "type": {
+          ".validate": "newData.isNumber() && root.child('categories/' + newData.val()).exists()"
+        },
+        "lat": {
+          ".validate": "newData.isNumber()"
+        },
+        "long": {
+          ".validate": "newData.isNumber()"
+        },
+        "message": {
+          ".validate": "newData.isString() && newData.val().length < 200"
+        },
+        "userId": {
+          ".validate": "null !== auth.uid"
+        }
+      }
+    },
+    "categories": {
+      ".read": true,
+      ".write": false
+    }
+  }
+}
