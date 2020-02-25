@@ -11,4 +11,4 @@ before_deploy:
 deploy:
   skip_cleanup: true
   provider: script
-  script: firebase deploy --only database,functions --project bibiphelp --token $FB_TOKEN
+  script: firebase deploy --only database,functions --project bibiphelp --token $FB_TOKEN --force
