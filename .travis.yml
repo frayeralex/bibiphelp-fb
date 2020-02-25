@@ -1,7 +1,10 @@
 language: node_js
 cache:
   - npm
+script:
+  - echo "skipping tests"
 deploy:
+  project: frayeralex/bibiphelp-fb
   provider: firebase
   token:
     secure: KJnlkIkGafipX8PW5BZc85x62NF7ZQdcRHOGjNYiuEtE1jWaXPXGrc04U4ul0bMMJOxKvagn5Q8H2maAyR05o4rrOhWDhlr5Pd9jF3R/uUIhwDnggO19McN36CoKt8+lyyTUVGt9sU5IPZzOitPuM8i0DfEXTDOIKqZVO2Dhhkn/9Y+nVgLU4Y3XRTPFizh1SPmxbiMg2ZX7UtfqvKr3+DFPrvhRBl6rs+CFhM+xVZFgMeouPKYkUrtE83145sd+BwY6d+BiLLr3+Xris2FsIJ0J1XsuHmhbrbMakU0XhGyP+yRXL3ZSMWaAUqcCt2TFprdbhMWTrqSjRGHqunS/pfdixhQmFlm246czqr7TKh/5wxgxy7a3+tzqtdr8ahK5YmNMFdDE9KBDHqaOddO9rAJD4QSaFXw8SYybHrRXnsQWiPbTV7CoHddmJUocw8uc4OCVrfX0Fm4j5sJD33mwE5VRdO6KcaSvd6tX9Krt467my1CRk/RMu9MyFavvUHnoDFWoj2Q2pix3c1hlHtJMkrLrAmEkl2qgz6UVj8qr+qCRqF0nOGjTSFchVoYl6kmasB3kVJQHh7jYLaQ0W3+4O86JMZUK5nYvaSyQxFU+oO5/GWUQiZvnm7iJ6V4Trvn7H8wLapk1av9mXEOSAitfZpB9+6LTRR9KtI7Xu13oaK8=
