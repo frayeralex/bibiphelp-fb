@@ -10,4 +10,4 @@ before_deploy:
 - cd ./functions && npm install && npm run build && cd ..
 deploy:
   provider: script
-  script: firebase deploy --token $FB_TOKEN
+  script: firebase deploy --project bibiphelp --token $FB_TOKEN
