@@ -17,10 +17,13 @@
           ".validate": "newData.isNumber()"
         },
         "message": {
-          ".validate": "newData.isString() && newData.val().length < 200"
+          ".validate": "newData.isString() && newData.val().length < 120"
         },
         "userId": {
-          ".validate": "null !== auth.uid"
+          ".validate": "newData.isString()"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber()"
         }
       }
     },
