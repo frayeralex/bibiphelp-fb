@@ -1,9 +1,9 @@
 {
   "rules": {
     "events": {
-      ".read": true,
+      ".read": "auth.uid != null",
       ".write": "auth.uid != null",
-      "$event": {
+      "$event_id": {
         "id": {
           ".validate": true
         },
