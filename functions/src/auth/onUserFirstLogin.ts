@@ -1,6 +1,7 @@
 import * as functions from 'firebase-functions';
 import * as admin from "firebase-admin";
 import UserRecord = admin.auth.UserRecord;
+admin.initializeApp();
 
 export const onUserFirstLogin = functions.auth.user().onCreate((user: UserRecord) => {
     const usersRef = admin.database().ref('users');
