@@ -1,15 +1,22 @@
 import * as functions from 'firebase-functions';
-import * as admin from "firebase-admin";
+import * as admin from 'firebase-admin';
 import UserRecord = admin.auth.UserRecord;
-admin.initializeApp();
 
-export const onUserFirstLogin = functions.auth.user().onCreate((user: UserRecord) => {
-    const usersRef = admin.database().ref('users');
-    usersRef.push(user.uid);
-    const newUser = usersRef.child(user.uid);
-    const createdAt = newUser.child('createdAt').set(Date.now());
+export const onUserFirstLogin = functions.auth.user().onCreate((user: UserRecord, context) => {
+    const appOptions = JSON.parse(process.env.FIREBASE_CONFIG!!);
+    appOptions.databaseAuthVariableOverride = context.auth;
+    const app = admin.initializeApp(appOptions, 'app');
 
-        return Promise.all([
-            createdAt
-        ]);
-    });
+    const usersRef = app.database().ref('users/' + user.uid);
+    const createdAt = usersRef.child('createdAt').set(Date.now());
+    const eventId = usersRef.child('eventId').set(null);
+
+    const deleteApp = () => app.delete().catch(() => null);
+
+    return Promise.all([
+        createdAt,
+        eventId
+    ])
+        .then(res => deleteApp().then(() => res))
+        .catch(err => deleteApp().then(() => Promise.reject(err)));
+});
