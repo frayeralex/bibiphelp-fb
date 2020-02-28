@@ -12,6 +12,6 @@ export const onUserFirstLogin = functions.auth.user().onCreate((user: UserRecord
     const deleteApp = () => app.delete().catch(() => null);
 
     return Promise.all([createdAt, eventId])
-        .then(res => deleteApp().then(() => res))
+        .then(result => deleteApp().then(() => result))
         .catch(err => deleteApp().then(() => Promise.reject(err)));
 });
