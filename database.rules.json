@@ -24,6 +24,15 @@
         },
         "createdAt": {
           ".validate": "newData.isNumber()"
+        },
+        "status": {
+          ".validate": "newData.isNumber()"
+        },
+        "helpers": {
+          "$helper_id": {
+            ".validate": "newData.isBoolean() && root.child('users/' + $helper_id).exists()",
+            ".write": "auth.uid === data.val()"
+          }
         }
       }
     },

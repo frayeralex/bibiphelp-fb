@@ -7,6 +7,7 @@ export const onEventCreate = functions.database
 
         return Promise.all([
             snapshot.ref.child('userId').set(context.auth?.uid),
+            snapshot.ref.child('status').set(0),
             snapshot.ref.child('createdAt').set(Date.now())
         ]);
     });
